@@ -1,0 +1,84 @@
+package Assignment;
+
+
+class Node {
+    
+    int value;
+   
+    Node next;
+  
+    
+    Node(int value) {
+      this.value = value;
+      this.next = null;
+    }
+  }
+class Stack {
+  
+  Node head;
+
+  
+  Stack() {
+    this.head = null;
+  }
+
+  
+  boolean isEmpty() {
+    return head == null;
+  }
+
+  
+  void push(int value) {
+    
+    Node newNode = new Node(value);
+    
+    newNode.next = head;
+    
+    head = newNode;
+  }
+
+
+  int pop() {
+    
+    if (isEmpty()) {
+      n
+      throw new RuntimeException("Stack is empty");
+    }
+    
+    int value = head.value;
+    
+    head = head.next;
+   
+    return value;
+  }
+
+
+  int display() {
+    
+    if (isEmpty()) {
+      
+      throw new RuntimeException("Stack is empty");
+    }
+    
+    return head.value;
+  }
+
+public static void main(String[] args) {
+
+
+
+  Stack stack = new Stack();
+  
+  stack.push(1);
+  stack.push(2);
+
+  stack.pop();
+  System.out.println("Top element of stack: " + stack.display());
+
+    
+}
+}
+
+
+
+
