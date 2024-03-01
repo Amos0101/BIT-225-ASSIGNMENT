@@ -1,0 +1,80 @@
+
+//IMPLEMENTATION OF QUEUE USING ARRAY
+
+public class QueueUsingArray {
+    private int front, rear, size,capacity;
+    private int [] queue;
+    public QueueUsingArray(int capacity){
+        this.capacity = capacity;
+        front = size = 0;
+        rear = capacity - 1;
+        queue = new int[this.capacity];
+    }
+    public  boolean isFull(){
+        return size == capacity;
+    }
+    public boolean isEmpty(){
+        return  size==0;
+    }
+    public  void enqueue(int item){
+        if(isFull())
+            return;
+        rear = (rear+1)%capacity;
+        queue[rear] = item;
+        size++;
+        System.out.println(item+" is enqueued");
+    }
+    public int dequeue(){
+        if(isEmpty())
+            return Integer.MIN_VALUE;
+        int item = queue[front];
+        front = (front + 1)%capacity;
+        size--;
+        return item;
+    }
+    public  int front(){
+        if(isEmpty())
+            return  Integer.MIN_VALUE;
+        return  queue[front];
+    }
+    public  int rear(){
+        if(isEmpty())
+            return  Integer.MIN_VALUE;
+        return  queue[rear];
+    }
+    public static void main(String[] args) {
+
+        QueueUsingArray queue = new QueueUsingArray(5);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.enqueue(5);
+        System.out.println();
+        System.out.println("Dequeued element "+queue.dequeue());
+        System.out.println("Dequeued element "+queue.dequeue());
+        System.out.println("Dequeued element "+queue.dequeue());
+        System.out.println();
+        System.out.println("Front element is "+queue.front());
+        System.out.println("Rear element is "+queue.rear());
+
+    }
+
+}
+
+"C:\Program Files\Java\jdk-21\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.3\lib\idea_rt.jar=50047:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.3\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\Administrator\IdeaProjects\javaProjects\out\production\javaProjects QueueUsingArray
+1 is enqueued
+2 is enqueued
+3 is enqueued
+4 is enqueued
+5 is enqueued
+
+Dequeued element 1
+Dequeued element 2
+Dequeued element 3
+
+Front element is 4
+Rear element is 5
+
+Process finished with exit code 0
