@@ -1,0 +1,77 @@
+//STACK IMPLEMENTATION USING ARRAY
+
+import java.security.PublicKey;
+
+public class StackUsingArray {
+
+    private static final int MAX = 100;
+    private  int top;
+    private int[] stackArray;
+
+    public StackUsingArray(){
+        top = -1;
+        stackArray = new int[MAX];
+    }
+    public  boolean isEmpty(){
+        return top == -1;
+    }
+    public boolean isFull(){
+        return top == MAX-1;
+    }
+    public void push(int item){
+        if(isFull()){
+            System.out.println("Stack overflow");
+            return;
+        }
+        stackArray[++top] = item;
+        System.out.println(item+" pushed into the stack");
+    }
+    public  int pop(){
+        if(isEmpty()){
+            System.out.println("stack underflow");
+            return -1;
+        }
+        int item = stackArray[top];
+        top--;
+        return item;
+    }
+    public int peek(){
+        if(isEmpty()){
+            System.out.println("stak is empty");
+            return -1;
+        }
+        return stackArray[top];
+    }
+
+    public static void main(String[] args) {
+
+        StackUsingArray stack = new StackUsingArray();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        stack.push(50);
+        stack.push(60);
+
+        System.out.println(stack.pop()+" popped from stack");
+        System.out.println(stack.pop()+" popped from stack");
+
+        System.out.println("Top element is "+stack.peek());
+
+    }
+}
+
+
+//OUTPUT
+10 pushed into the stack
+20 pushed into the stack
+30 pushed into the stack
+40 pushed into the stack
+50 pushed into the stack
+60 pushed into the stack
+60 popped from stack
+50 popped from stack
+Top element is 40
+
+Process finished with exit code 0
