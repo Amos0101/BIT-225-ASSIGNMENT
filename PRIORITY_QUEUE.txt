@@ -1,0 +1,77 @@
+package priority;
+
+class PriorityQueue {
+    private int maxSize;
+    private int[] queueArray;
+    private int nItems;
+
+    PriorityQueue(int size) {
+        this.maxSize = size;
+        this.queueArray = new int[maxSize];
+        this.nItems = 0;
+    }
+
+    public void insert(int item) {
+        if (isFull()) {
+            System.out.println("Priority Queue is full. Cannot insert element.");
+            return;
+        }
+
+        if (nItems == 0) {
+            queueArray[nItems++] = item;
+        } else {
+            int j = nItems - 1;
+            while (j >= 0 && item > queueArray[j]) {
+                queueArray[j + 1] = queueArray[j];
+                j--;
+            }
+            queueArray[j + 1] = item;
+            nItems++;
+        }
+    }
+
+    public int remove() {
+        if (isEmpty()) {
+            System.out.println("Priority Queue is empty. Cannot remove element.");
+            return -1;
+        }
+        return queueArray[--nItems];
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Priority Queue is empty. No element to peek.");
+            return -1;
+        }
+        return queueArray[nItems - 1];
+    }
+
+    public boolean isEmpty() {
+        return (nItems == 0);
+    }
+
+    public boolean isFull() {
+        return (nItems == maxSize);
+    }
+}
+
+
+        
+
+public class Priority {
+
+    public static void main(String[] args) {
+     PriorityQueue priorityQueue = new PriorityQueue(5);
+        priorityQueue.insert(30);
+        priorityQueue.insert(50);
+        priorityQueue.insert(10);
+        priorityQueue.insert(40);
+
+        System.out.println("Peek element: " + priorityQueue.peek());
+
+        System.out.println("Removed element: " + priorityQueue.remove());
+        System.out.println("Removed element: " + priorityQueue.remove());
+
+        System.out.println("Peek element: " + priorityQueue.peek());
+    }
+}  
